@@ -34,4 +34,4 @@ In subjectively beautiful *(top)* and colorblind and b/w friendly *(bottom)*:
 <img src="https://github.com/hanneswarnhofer/multiview-cnn-fusion-iact/blob/main/2024-02-19_FullPlot_coloblindfriendly.png" width=70% height=70%>
 
 Plot with results from both Early Fusion positions included:
-<img src="https://github.com/hanneswarnhofer/multiview-cnn-fusion-iact/blob/main/2024-02-19_FullPlot_BothEarlyPositions.png" width=80% height=80%>
+<img src="https://github.com/hanneswarnhofer/multiview-cnn-fusion-iact/blob/main/2024-02-21_FullPlot_BothEarlyPositions.png" width=80% height=80%>
