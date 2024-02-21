@@ -25,3 +25,5 @@ The following fusion types can be set:
 - Score Mean: `scoresum`
 - Score Prod: `scoreproduct`
 - Score Max: `scoremax`
+
+With any questions regarding this code, feel free to contact hannes.warnhofer@fau.de 
