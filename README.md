@@ -3,7 +3,7 @@ Here you can find the code and model visualisations for the research note "Multi
 
 ### For an overview about the model architectures and visualisations of the fusion methods used see: [HESS_CNN_Model_Architectures.pdf](https://github.com/hanneswarnhofer/multiview-cnn-fusion-iact/files/14356915/HESS_CNN_Model_Architectures.pdf)
 
-![alt text](https://github.com/hanneswarnhofer/multiview-cnn-fusion-iact/blob/main/2024-02-21_FullPlot.jpg?raw=true)
+![alt text](https://github.com/hanneswarnhofer/multiview-cnn-fusion-iact/blob/main/2024-02-21_FullPlot.png?raw=true)
 
 
 ## Guide
