@@ -14,15 +14,15 @@ Example usage (see the top of `HESS_CNN_Run.py` for detailed information about t
 - LateFC Fusion, 250 epochs, 250000 events: `python HESS_CNN_Run.py -e 250 -ne 250000 -ft 'latefc' `
 
 The following fusion types can be set:
-- Early Max Position 1: `earlymax2`
-- Early Conv Position 1: `earlyconv2`
-- Early Concat Position 1: `earlyconcat2`
-- Early Max Position 2: `earlymax`
-- Early Conv Position 2: `earlyconv`
-- Early Concat Position 2: `earlyconcat`
+- Early Max Position 1: `earlymax`
+- Early Conv Position 1: `earlyconv`
+- Early Concat Position 1: `earlyconcat`
+- Early Max Position 2: `earlymax2`
+- Early Conv Position 2: `earlyconv2`
+- Early Concat Position 2: `earlyconcat2`
 - Late FC: `latefc`
 - Late Max: `latemax`
-- Score Mean: `scoresum`
+- Score Mean: `scoremean`
 - Score Prod: `scoreproduct`
 - Score Max: `scoremax`
 
