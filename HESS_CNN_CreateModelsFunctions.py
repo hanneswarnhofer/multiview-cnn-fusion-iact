@@ -142,7 +142,7 @@ def create_single_model(model):
 
 def create_score_model(models,inputs,fusiontype):
     outputs = [model.output for model in models]
-    if fusiontype == 'scoresum':
+    if fusiontype == 'scoremean':
         # Sum-score fusion
         fused_output = Lambda(lambda x: K.sum(x, axis=-1,keepdims=True)/4)(concatenate(outputs, axis=-1))
     elif fusiontype == 'scoreproduct':
@@ -402,7 +402,7 @@ def create_multi_model(base, transfer, fusiontype, input_shape, kernel_size, dro
     print("###### ",base, " ##### ",fusiontype," ######")
     if transfer == 'yes':
 
-        if fusiontype == 'earlymax' or fusiontype == 'earlyconcat' or fusiontype == 'earlyconv':
+        if fusiontype == 'earlymax2' or fusiontype == 'earlyconcat2' or fusiontype == 'earlyconv2':
 
             input_1 = Input(shape=input_shape)
             cnn_model_1 = create_base_model_early(input_shape, freeze=True)(input_1)
@@ -441,7 +441,7 @@ def create_multi_model(base, transfer, fusiontype, input_shape, kernel_size, dro
 
     elif transfer == 'no':
         
-        if fusiontype == 'earlymax' or fusiontype == 'earlyconcat' or fusiontype == 'earlyconv':
+        if fusiontype == 'earlymax2' or fusiontype == 'earlyconcat2' or fusiontype == 'earlyconv2':
 
             input_1 = Input(shape=input_shape)
             cnn_model_1 = create_base_model_early(input_shape)(input_1)
@@ -455,7 +455,7 @@ def create_multi_model(base, transfer, fusiontype, input_shape, kernel_size, dro
             input_4 = Input(shape=input_shape)
             cnn_model_4 = create_base_model_early(input_shape)(input_4)
 
-        elif fusiontype == 'earlymax2' or fusiontype == 'earlyconv2' or fusiontype == 'earlyconcat2':
+        elif fusiontype == 'earlymax' or fusiontype == 'earlyconv' or fusiontype == 'earlyconcat':
 
             input_1 = Input(shape=input_shape)
             cnn_model_1 = create_base_model_early2(input_shape)(input_1)
@@ -498,23 +498,23 @@ def create_multi_model(base, transfer, fusiontype, input_shape, kernel_size, dro
             cnn_model_4 = create_base_model_moda(input_shape,kernel_size,dropout_rate,reg,pool_size)(input_4)   
 
     #cnn2_model = create_CNN2_model_moda(input_shape,kernel_size,dropout_rate,reg,pool_size)
-    if fusiontype == 'earlymax':
+    if fusiontype == 'earlymax2':
         model_multi = create_earlymax_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4],dropout_rate,kernel_size,pool_size,reg)
-    elif fusiontype == 'earlymax2':
+    elif fusiontype == 'earlymax':
         model_multi = create_earlymax2_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4],dropout_rate,kernel_size,pool_size,reg)
-    elif fusiontype == 'earlyconv':
-        model_multi = create_earlyconv_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4],dropout_rate,kernel_size,pool_size,reg)
     elif fusiontype == 'earlyconv2':
+        model_multi = create_earlyconv_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4],dropout_rate,kernel_size,pool_size,reg)
+    elif fusiontype == 'earlyconv':
         model_multi = create_earlyconv2_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4],dropout_rate,kernel_size,pool_size,reg)
-    elif fusiontype == 'earlyconcat':
-        model_multi = create_earlyconcat_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4],dropout_rate)  
     elif fusiontype == 'earlyconcat2':
+        model_multi = create_earlyconcat_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4],dropout_rate)  
+    elif fusiontype == 'earlyconcat':
         model_multi = create_earlyconcat2_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4],dropout_rate)  
     elif fusiontype == "latefc":
         model_multi = create_latefc_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4])
     elif fusiontype == "latemax":
         model_multi = create_latemax_model([cnn_model_1, cnn_model_2, cnn_model_3, cnn_model_4],[input_1, input_2, input_3, input_4])
-    elif fusiontype == 'scoresum' or fusiontype == 'scoreproduct' or fusiontype == 'scoremax':
+    elif fusiontype == 'scoremean' or fusiontype == 'scoreproduct' or fusiontype == 'scoremax':
         single_view_models = [create_single_model(cnn_model_1), create_single_model(cnn_model_2), create_single_model(cnn_model_3), create_single_model(cnn_model_4)]
         model_multi = create_score_model(single_view_models,[input_1, input_2, input_3, input_4],fusiontype)
     else: print("ERROR: Fusiontype not known!!")
