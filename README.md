@@ -10,8 +10,8 @@ The code loads simulated HESS-I data and maps them to a 41x41 array using axial 
 
 Example usage (see the top of `HESS_CNN_Run.py` for detailed information about the arguments that can be set when running the file):
 
-EarlyMax Fusion, 50 epochs, 100000 events: `python HESS_CNN_Run.py -ft 'earlymax'`
-LateFC Fusion, 250 epochs, 250000 events: `python HESS_CNN_Run.py -e 250 -ne 250000 -ft 'latefc' `
+- EarlyMax Fusion, 50 epochs, 100000 events: `python HESS_CNN_Run.py -ft 'earlymax'`
+- LateFC Fusion, 250 epochs, 250000 events: `python HESS_CNN_Run.py -e 250 -ne 250000 -ft 'latefc' `
 
 The following fusion types can be set:
 - Early Max Position 1: `earlymax2`
