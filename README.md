@@ -36,3 +36,5 @@ In subjectively beautiful *(top)* and colorblind and b/w friendly *(bottom)*:
 
 Plot with results from both Early Fusion positions included:
 <img src="https://github.com/hanneswarnhofer/multiview-cnn-fusion-iact/blob/main/2024-02-21_FullPlot_BothEarlyPositions.png" width=80% height=80%>
+
+Zenodo DOI: https://doi.org/10.5281/zenodo.10868020
